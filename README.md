@@ -2,7 +2,7 @@
 
 Add auto paragraph from plain string.
 
-## Useage
+## usage
 
 ```bash
 npm install autop --save
