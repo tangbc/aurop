@@ -1,4 +1,7 @@
-const autop_newline_preservation_helper = matches => matches[0].replace('\n', '<PreserveNewline />')
+
+function newlinePreservationHelper (matches) {
+    return matches && matches[0].replace('\n', '<PreserveNewline />')
+}
 
 module.exports = function autop (pee, br) {
     let pre_tags = new Map()
@@ -90,7 +93,7 @@ module.exports = function autop (pee, br) {
 
     if (br) {
         // /s modifier from php PCRE regexp replaced with (?:.|\n)
-        pee = pee.replace(/<(script|style)(?:.|\n)*?<\/\\1>/gmi, autop_newline_preservation_helper)
+        pee = pee.replace(/<(script|style)(?:.|\n)*?<\/\\1>/gmi, newlinePreservationHelper)
         // optionally make line breaks
         pee = pee.replace(/(<br \/>)?\s*\n/gmi, '<br />\n')
         pee = pee.replace('<PreserveNewline />', '\n')
